@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-10 w-full px-20">
+    <img class="w-full" src="{{ post.image.url }}" alt="Imagen alusiva al artículo">
+</div>
+
+<div class="container mt-5 m-auto w-full">
+    <h1 class="text-center text-2xl font-semibold mx-auto">{{ post.title }}</h1>
+    <p class="text-sm mx-0 text-center">{{ post.date }}</p>
+</div>
+
+<div class="container mt-10 w-full px-20">
+    <p class="mx-auto text-justify">{{ post.description }}</p>
+</div>
+{% endblock %}

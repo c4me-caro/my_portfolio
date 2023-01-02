@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+    @apply font-ubuntu;
+}
+
+.btn {
+    @apply mx-auto bg-blue-500 hover:bg-blue-700 text-white rounded-md font-medium px-4 py-2 my-4;
+}
+
+.menu-user {
+    @apply absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none;
+    display: none;
+}
+
+.nav-item {
+    @apply hover:bg-dark-white px-3 py-2 rounded-md font-medium text-lg text-base dark:hover:bg-black dark:hover:border;
+}
+
+.show {
+    display: block;
+}
+
+.banner {
+    background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.5)), url("/static/portfolio/img/banner.jpg") no-repeat center/cover;
+}

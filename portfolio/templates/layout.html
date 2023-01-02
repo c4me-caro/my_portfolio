@@ -1,0 +1,141 @@
+{% load tailwind_tags %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} | Caleb D. Caro</title>
+  {% tailwind_css %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="dark:bg-black dark:text-white">
+
+  <header>
+
+    <nav>
+      <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="relative flex h-16 items-center justify-between">
+          <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+
+            <button type="button" id="nav-button"
+              class="inline-flex items-center justify-center rounded-md p-2 hover:bg-dark-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              aria-controls="mobile-menu" aria-expanded="false">
+
+              <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+
+              <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+
+            </button>
+          </div>
+
+          <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+            <div class="flex flex-shrink-0 items-center">
+              <i class="font-extrabold text-xl">CDC</i>
+            </div>
+
+            <div class="hidden sm:ml-6 sm:block">
+              <div class="flex space-x-4">
+
+                <a href="/" class="nav-item">Inicio</a>
+
+                <a href="/blog" class="nav-item">Blog</a>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="absolute inset-y-0 right-5 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+
+            <div class="relative ml-3">
+              <div>
+
+                <button type="button" class="m-auto flex text-lg focus:outline-none" id="user-menu-button"
+                  aria-expanded="false" aria-haspopup="true">
+                  <i class="fa-solid fa-ellipsis-v"></i>
+                </button>
+
+              </div>
+
+              <div class="menu-user" id="menu-user" role="menu" aria-orientation="vertical"
+                aria-labelledby="user-menu-button" tabindex="-1">
+
+                <a href="/admin" class="hover:bg-dark-white block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                  tabindex="-1" id="user-menu-item-1">Admin Side <i class="float-right text-lg fa-solid fa-code"></i></a>
+                <a href="" onclick="toggleTheme()" id="theme-toggle"
+                  class="hover:bg-dark-white block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">Modo
+                  Oscuro <i class="float-right fa-solid text-lg fa-palette"></i></a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden" id="mobile-menu">
+        <div class="space-y-1 px-2 pt-2 pb-3">
+
+          <a href="/" class="nav-item block">Inicio</a>
+          <a href="/blog" class="nav-item block">Blog</a>
+
+        </div>
+      </div>
+    </nav>
+
+  </header>
+
+  <div class="container mx-auto m-0">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+  <footer>
+    <div class="mx-auto max-w-7xl sm:px-6 lg:px-8 mt-5 h-16">
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("theme-toggle").addEventListener("click", function (e) {
+      e.preventDefault();
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
+    });
+
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
+  </script>
+
+  <script>
+    var menuuser = document.getElementById("user-menu-button");
+    var menuitem = document.getElementById("menu-user");
+
+    menuuser.addEventListener("click", function () {
+      menuitem.classList.toggle("show");
+    });
+
+    var menunav = document.getElementById("nav-button");
+    var navitem = document.getElementById("mobile-menu");
+
+    menunav.addEventListener("click", function () {
+      navitem.classList.toggle("show");
+    });
+  </script>
+  {% block script %}{% endblock %}
+
+</body>
+
+</html>
