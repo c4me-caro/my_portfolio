@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="¡Bienvenido a mi portafolio personal! Soy Caleb D. Caro, un entusiasta apasionado por la tecnología y un explorador incansable de su potencial. A través de mi sitio web, te invito a sumergirte en un fascinante mundo de proyectos innovadores y reflexiones en mi blog, donde fusiono distintas áreas de la tecnología y vislumbro el emocionante futuro que nos aguarda. Descubre cómo mis habilidades y creatividad se entrelazan para dar vida a soluciones únicas. Únete a este emocionante viaje creativo mientras comparto mi pasión por la innovación tecnológica y su impacto en nuestro mundo.">
   <title>{{ title }} | Caleb D. Caro</title>
   {% tailwind_css %}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -23,7 +24,7 @@
           <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
 
             <button type="button" id="nav-button"
-              class="inline-flex items-center justify-center rounded-md p-2 hover:bg-dark-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              class="inline-flex items-center justify-center rounded-md p-2 focus:outline-none"
               aria-controls="mobile-menu" aria-expanded="false">
 
               <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -45,12 +46,9 @@
             </div>
 
             <div class="hidden sm:ml-6 sm:block">
-              <div class="flex space-x-4">
-
-                <a href="/" class="nav-item">Inicio</a>
-
-                <a href="/blog" class="nav-item">Blog</a>
-
+              <div class="flex space-x-4" id="big_menu">
+                <a href="/" class="nav-item block">Inicio</a>
+                <a href="/blog/" class="nav-item block">Blog</a>
               </div>
             </div>
           </div>
@@ -70,7 +68,7 @@
               <div class="menu-user" id="menu-user" role="menu" aria-orientation="vertical"
                 aria-labelledby="user-menu-button" tabindex="-1">
 
-                <a href="/admin" class="hover:bg-dark-white block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                <a href="/admin/" onclick="closemenu();" class="hover:bg-dark-white block px-4 py-2 text-sm text-gray-700" role="menuitem"
                   tabindex="-1" id="user-menu-item-1">Admin Side <i class="float-right text-lg fa-solid fa-code"></i></a>
                 <a href="" onclick="toggleTheme()" id="theme-toggle"
                   class="hover:bg-dark-white block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">Modo
@@ -83,11 +81,9 @@
       </div>
 
       <div class="hidden" id="mobile-menu">
-        <div class="space-y-1 px-2 pt-2 pb-3">
-
-          <a href="/" class="nav-item block">Inicio</a>
-          <a href="/blog" class="nav-item block">Blog</a>
-
+        <div class="space-y-1 px-2 pt-2 pb-3" id="small_menu">
+            <a href="/" class="nav-item block">Inicio</a>
+            <a href="/blog/" class="nav-item block">Blog</a>
         </div>
       </div>
     </nav>
@@ -105,21 +101,6 @@
   </footer>
 
   <script>
-    document.getElementById("theme-toggle").addEventListener("click", function (e) {
-      e.preventDefault();
-      document.documentElement.classList.toggle('dark');
-      localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
-    });
-
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
-  </script>
-
-  <script>
     var menuuser = document.getElementById("user-menu-button");
     var menuitem = document.getElementById("menu-user");
 
@@ -133,7 +114,28 @@
     menunav.addEventListener("click", function () {
       navitem.classList.toggle("show");
     });
+
+    function closemenu() {
+        menuitem.classList.toggle("show");
+    }
   </script>
+
+  <script>
+    document.getElementById("theme-toggle").addEventListener("click", function (e) {
+      e.preventDefault();
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
+      menuitem.classList.toggle("show");
+    });
+
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
+  </script>
+
   {% block script %}{% endblock %}
 
 </body>

@@ -3,16 +3,16 @@
 {% block content %}
 <div class="banner lg:w-[90%] m-auto flex p-0 flex-col h-banner justify-end">
     <div class="my-auto p-6 mb-5">
-        <h1 class="text-white text-2xl">Soy <strong class="typed"></strong></h1><br>
+        <h1 class="text-white text-2xl">Soy <span class="typed font-extrabold"></strong></h1><br>
         <p class="text-gray-100 text-md font-light">Soy un programador autodidacta con amplios conocimientos en
-            distintas ramas de las tecnologías de la información. Estoy más especializado en desarrollo Back-End,
+            distintas ramas de las tecnologías de la información. Me he especializado en desarrollo Back-End,
             programación de herramientas CLI y Python Scripting. Sin embargo, no dejo de aprender y buscar formas de
             ampliar mis horizontes y expandir mis capacidades.</p><br />
         <a href="/static/portfolio/documents/HV.pdf" target="_blank" rel="noopener noreferrer" class="btn">Descargar
             CV</a>
     </div>
 </div>
-
+{% if projects %}
 <div class="container mt-10 m-auto w-full">
     <h2 class="text-center text-xl font-semibold mx-auto">Mis Proyectos Realizados</h2>
 </div>
@@ -40,15 +40,16 @@
     </div>
 </div>
 <br>
+{% endif %}
 
 <div class="mx-auto mt-10 container">
-    <h4 class="mb-10 text-center mx-auto text-xl font-semibold">Mis Redes Sociales</h4>
+    <h2 class="mb-10 text-center mx-auto text-xl font-semibold">Mis Redes Sociales</h2>
     <div class="flex items-center justify-center">
         <a href="https://github.com/c4me-caro" target="_blank" rel="noopener noreferrer" class="mx-3">
             <i class="fab fa-github text-3xl"></i>
         </a>
-        <a href="mailto:c4me.caro@gmail.com" target="_blank" rel="noopener noreferrer" class="mx-3">
-            <i class="fa-brands fa-google text-3xl"></i>
+        <a href="https://www.linkedin.com/in/caleb-david-caro-campo-527b931b0/" target="_blank" rel="noopener noreferrer" class="mx-3">
+            <i class="fa-brands fa-linkedin text-3xl"></i>
         </a>
         <a href="https://twitter.com/cocolinte" target="_blank" rel="noopener noreferrer" class="mx-3">
             <i class="fa-brands fa-twitter text-3xl"></i>

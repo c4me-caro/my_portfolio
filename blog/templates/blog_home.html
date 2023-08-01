@@ -9,11 +9,11 @@
     <h1 class="text-lg font-semibold">Aún no hay entradas</h1>
 </div>
 {% endif %}
-<div class="container mt-10 w-11/12 p-3 grid gap-6 grid-cols-4">
+<div class="container mt-10 sm:w-11/12 p-6 w-full flex flex-wrap sm:grid sm:gap-6 sm:grid-cols-4", id="cardslister">
+    {% for post in posts %}
     <div>
-        {% for post in posts %}
-        <div class="border p-1">
-            <img class="w-full h-48" src="{{ post.image.url }}" alt="{{ post.title }}">
+        <div class="border p-1 flex-auto">
+            <img class="w-fill" src="{{ post.image.url }}" alt="{{ post.title }}">
             <h2 class="text-xl font-bold">{{ post.title }}</h2>
             <a class="block font-medium text-md dark:text-dark-white text-gray-800" href="/blog/post/{{ post.id }}">Ver
                 Artículo Completo
@@ -23,4 +23,18 @@
     </div>
     {% endfor %}
 </div>
+{% endblock %}
+
+{% block script %}
+<!-- <script>
+    if (screen.width < 640) {
+        document.getElementById('cardslister').classList.add("w-full");
+        document.getElementById('cardslister').classList.add(" flex");
+        document.getElementById('cardslister').classList.add("flex-wrap");
+    } else {
+        document.getElementById('cardslister').classList.add("grid");
+        document.getElementById('cardslister').classList.add("gap-6");
+        document.getElementById('cardslister').classList.add("grid-cols-4");
+    }
+</script> -->
 {% endblock %}
