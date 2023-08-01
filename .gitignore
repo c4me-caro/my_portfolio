@@ -4,4 +4,3 @@ __pycache__
 venv
 *.swp
 db.sqlite3
-
