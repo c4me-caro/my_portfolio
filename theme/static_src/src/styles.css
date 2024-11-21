@@ -18,7 +18,7 @@ html, body {
 }
 
 .nav-item {
-    @apply hover:bg-dark-white px-3 py-2 rounded-md font-medium text-lg text-base dark:hover:bg-black dark:hover:border;
+    @apply hover:bg-dark-white px-3 py-2 rounded-md font-medium text-lg text-base dark:hover:bg-black dark:hover:bg-[#111];
 }
 
 .show {

@@ -72,7 +72,7 @@
                   tabindex="-1" id="user-menu-item-1">Admin Side <i class="float-right text-lg fa-solid fa-code"></i></a>
                 <a href="" onclick="toggleTheme()" id="theme-toggle"
                   class="hover:bg-dark-white block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">Modo
-                  Oscuro <i class="float-right fa-solid text-lg fa-palette"></i></a>
+                  <span id="theme_name"></span> <i class="float-right fa-solid text-lg fa-palette"></i></a>
 
               </div>
             </div>
@@ -125,13 +125,16 @@
       e.preventDefault();
       document.documentElement.classList.toggle('dark');
       localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
+      document.getElementById("theme_name").innerHTML = localStorage.theme == 'dark' ? "Claro" : "Oscuro";
       menuitem.classList.toggle("show");
     });
 
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
+      document.getElementById("theme_name").innerHTML = "Claro";
     } else {
       document.documentElement.classList.remove('dark');
+      document.getElementById("theme_name").innerHTML = "Oscuro";
     }
     localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
   </script>

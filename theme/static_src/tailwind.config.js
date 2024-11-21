@@ -47,11 +47,12 @@ module.exports = {
         },
         extend: {
             colors: {
-                'dark-white': '#f5f5f5'
+                'dark-white': '#777',
+                'dark-mark': '#ccc'
             },
             height: {
                 'banner': '550px'
-            }
+            },
         },
     },
     plugins: [

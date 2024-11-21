@@ -12,10 +12,10 @@
 <div class="container mt-10 sm:w-11/12 p-6 w-full flex flex-wrap sm:grid sm:gap-6 sm:grid-cols-4", id="cardslister">
     {% for post in posts %}
     <div>
-        <div class="border p-1 flex-auto">
+        <div class="border dark:border-slate-900 p-1 flex-auto">
             <img class="w-fill" src="{{ post.image.url }}" alt="{{ post.title }}">
             <h2 class="text-xl font-bold">{{ post.title }}</h2>
-            <a class="block font-medium text-md dark:text-dark-white text-gray-800" href="/blog/post/{{ post.id }}">Ver
+            <a class="block font-medium text-md dark:text-dark-mark text-gray-950" href="/blog/post/{{ post.id }}">Ver
                 Artículo Completo
                 <i class="fas fa-angle-double-right"></i></a>
         </div>
